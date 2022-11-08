@@ -174,11 +174,13 @@
                     const inputPrice = container.querySelector("input[type=number]");
                     const updateInfo = {
                         productName: inputName.value,
-                        price: inputPrice.value,
+                        price: +inputPrice.value,
                     };
 
+                    // PUT : 모든 데이터(리소스)를 업데이트 (요청 시 담지 않은 값은 NULL로 저장)
+                    // PATCH : 요청한 데이터(리소스)만 업데이트
                     fetch(`http://localhost:3001/product/${item.id}`, {
-                        method: "PUT",
+                        method: "PATCH",
                         headers: {"Content-Type": "application/json"},
                         body: JSON.stringify(updateInfo),
                     }).then(() => {
